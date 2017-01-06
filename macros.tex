@@ -1,0 +1,279 @@
+%!TEX root = paper.tex
+
+%following two lines added to supress/fix the following error - amsthm.sty:444: LaTeX Error: Command \proof already defined.
+\let\proof\relax
+\let\endproof\relax
+
+%following five lines added to supress/fix the following errors -
+%algorithm2e.sty:1616: Too many }'s. [    }]
+%algorithm2e.sty:1617: Extra \fi. [\fi]
+
+\makeatletter
+\newif\if@restonecol
+\makeatother
+\let\algorithm\relax
+\let\endalgorithm\relax
+
+\usepackage{paralist}
+\usepackage{color}
+\usepackage[colorlinks=true,pdfpagelabels=false,bookmarks=false]{hyperref}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{ifthen}
+\usepackage[ruled,vlined]{algorithm2e}
+% \usepackage{flushend}
+\usepackage{multirow}
+\usepackage{xspace}
+\usepackage{algorithmic}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{subfig}
+\usepackage{expdlist}
+% \usepackage{natbib}
+\usepackage{tabulary}
+\usepackage{framed}
+\renewenvironment{leftbar}[1][\hsize]
+{%
+    \def\FrameCommand
+    {%
+        {\vrule width 1pt}%
+        \hspace{5pt}%
+        \fboxsep=\FrameSep%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}
+{\endMakeFramed}
+
+
+\newcommand{\ie}{\textit{i.e.,}\xspace}
+\newcommand{\eg}{\textit{e.g.,}\xspace}
+\newcommand{\etal}{\textit{et al.}\xspace}
+\newcommand{\nb}{\textit{N.B.,}\xspace}
+
+% \def\tech{\textsc{Brain Visualization}\xspace}
+% \def\tech{\textsc{The Brain}\xspace}
+\def\tech{\textsc{Cerebro}\xspace}
+\def\jinsight{\textsc{Jinsight}\xspace}
+\def\extravis{\textsc{Extravis}\xspace}
+\def\stars{\textsc{Constellation} visualization\xspace}
+\def\jive{\textsc{Jive}\xspace}
+\def\synctrace{\textsc{SyncTrace}\xspace}
+\def\tracediff{\textsc{TraceDiff}\xspace}
+\def\seesoft{\textsc{SeeSoft}\xspace}
+
+
+\hyphenation{fault-lo-cal-iz-a-tion}
+\hyphenation{fault-di-ag-no-sis}
+\hyphenation{Ja-va}
+
+
+\newtheoremstyle{mydef}% ⟨name⟩ 
+{3pt}% ⟨Space above⟩ 
+{3pt}% ⟨Space below⟩
+% {\addtolength{\leftskip}{1em}\addtolength{\rightskip}{1em}\slshape} % ⟨Body font⟩
+{\slshape} % ⟨Body font⟩
+{}% ⟨Indent amount⟩
+{\bfseries}% ⟨Theorem head font⟩
+{.}% ⟨Punctuation after theorem head⟩
+{1em}% ⟨Space after theorem head⟩2
+{\thmname{#1}\thmnumber{ #2}:\textit{\thmnote{ #3}}}% ⟨Theorem head spec (can be left empty, meaning ‘normal’)⟩
+
+\theoremstyle{mydef}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+
+% JIM: I'm defining this here as we seem to have different styles on how to handle such unofficial, pseudo ``subsections''. I like to use something like these pseudo subsections, too, especially for this IEEE format in which subsections, and even worse subsubsections, look bad.
+% Harry's style:
+% \newcommand{\mysubsection}[1]{\textit{\textbf{#1}}~~~}
+% Jim's style: (Jim likes Jim's style better. Big surprise! ;-)
+% \newcommand{\mysubsection}[2]{\vspace{1.25mm}\noindent\textit{\textbf{#1.} #2}}
+% \newcommand{\mysubsubsection}[1]{\vspace{1.25mm}\noindent\textit{#1.}}
+\newcommand{\mysubsection}[1]{\vspace{1.25mm}\noindent\textit{\textbf{#1.}}}
+\newcommand{\mysubsubsection}[1]{\vspace{1.25mm}\noindent\textit{#1.}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The following definitions are to extend the LaTeX algorithmic 
+%% package with SWITCH statements and one-line structures.
+%% The extension is by 
+%%   Prof. Farn Wang 
+%%   Dept. of Electrical Engineering, 
+%%   National Taiwan University. 
+%% 
+\newcommand{\SWITCH}[1]{\STATE \textbf{switch} (#1)}
+\newcommand{\ENDSWITCH}{\STATE \textbf{end switch}}
+\newcommand{\CASE}[1]{\STATE \textbf{case} #1\textbf{:} \begin{ALC@g}}
+\newcommand{\ENDCASE}{\end{ALC@g}}
+\newcommand{\CASELINE}[1]{\STATE \textbf{case} #1\textbf{:} }
+\newcommand{\DEFAULT}{\STATE \textbf{default:} \begin{ALC@g}}
+\newcommand{\ENDDEFAULT}{\end{ALC@g}}
+\newcommand{\DEFAULTLINE}[1]{\STATE \textbf{default:} }
+%% 
+%% End of the LaTeX algorithmic package extension.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\d3js{\textsc{D3.js}\xspace}
+\def\blinky{\textsc{Blinky}\xspace}
+\def\mantis{\textsc{Mantis}\xspace}
+\def\tarantula{\textsc{Tarantula}\xspace}
+\def\aspectj{\textsc{AspectJ}\xspace}
+\def\tetris{\textsc{Tetris}\xspace}
+\def\nanoxml{\textsc{NanoXML}\xspace}
+\def\javac{\textsc{Javac}\xspace}
+\def\jpacman{\textsc{JPacman}\xspace}
+\def\jedit{\textsc{jEdit}\xspace}
+\def\ibugs{\textsc{iBugs}\xspace}
+
+
+\def\denseitems{
+  \itemsep1pt plus1pt minus1pt
+  \parsep0pt plus0pt
+  \parskip0pt
+  \topsep0pt
+}
+
+%% Alternative to itemize
+\newenvironment{smallitemize}{
+   \setlength{\topsep}{0pt}
+   \setlength{\partopsep}{0pt}
+   \setlength{\parskip}{0pt}
+   \begin{itemize}
+   \setlength{\leftmargin}{.2in}
+   \setlength{\parsep}{0pt}
+   \setlength{\parskip}{0pt}
+   \setlength{\itemsep}{0pt}}{\end{itemize}}
+
+%% Alternative to enumerate
+\newenvironment{smallenumerate}{
+   \setlength{\topsep}{0pt}
+   \setlength{\partopsep}{0pt}
+   \setlength{\parskip}{0pt}
+   \begin{enumerate}
+   \setlength{\leftmargin}{.2in}
+   \setlength{\parsep}{0pt}
+   \setlength{\parskip}{0pt}
+   \setlength{\itemsep}{0pt}}{\end{enumerate}}
+
+%% Alternative to description
+\newenvironment{smalldescription}{
+   \setlength{\topsep}{0pt}
+   \setlength{\partopsep}{0pt}
+   \setlength{\parskip}{0pt}
+   \begin{description}
+   \setlength{\leftmargin}{.2in}
+   \setlength{\parsep}{0pt}
+   \setlength{\parskip}{0pt}
+   \setlength{\itemsep}{0pt}}{\end{description}}
+
+% Set author comment colors
+\newcommand{\nick}[1]
+{
+   {\color{red}\bf [#1]$_{\scriptscriptstyle\textit{nicholas}}$}
+}
+\definecolor{grayblue}{rgb}{0.4,0.49,0.59}
+\newcommand{\jim}[1]
+{
+   {\color{grayblue}\bf [#1]$_{\scriptscriptstyle\textit{jim}}$}
+}
+\newcommand{\paco}[1]
+{
+   {\color{green}\bf [#1]$_{\scriptscriptstyle\textit{paco}}$}
+}
+\definecolor{darkgreen}{rgb}{0.2,0.55,0.1} 
+\newcommand{\vijay}[1]
+{
+   {\color{darkgreen}\bf [#1]$_{\scriptscriptstyle\textit{vijay}}$}
+}
+\definecolor{violet}{rgb}{0.54,0.17,0.88} 
+\newcommand{\jy}[1]
+{
+   {\color{violet}\bf [#1]$_{\scriptscriptstyle\textit{harry}}$}
+}
+
+% Allow author comments to be turned off
+\newcommand{\includeAuthorComments}[1]
+{
+   \ifthenelse{\equal{#1}{0}}
+   {
+      \renewcommand{\nick}[1]
+      {
+         {} % empty definition
+      }
+      \renewcommand{\jim}[1]
+      {
+         {} % empty definition
+      }
+      \renewcommand{\paco}[1]
+      {
+         {} % empty definition
+      }
+      \renewcommand{\vijay}[1]
+      {
+         {} % empty definition
+      }
+      \renewcommand{\harry}[1]
+      {
+         {} % empty definition
+      }
+   }{}
+}
+
+% Jim's tweaks for making the PDF easier on the eyes when proofreading on screen.
+% defaults:
+\hypersetup{linkcolor=black,citecolor=black,urlcolor=black}
+\pagecolor{white}
+\color{black}
+
+\newcommand{\pdfColorScheme}[1]
+{
+   \ifthenelse{\equal{#1}{0}}{ % Standard black text on white background
+      \definecolor{foregc}{RGB}{0,0,0}
+      \definecolor{backgc}{RGB}{255,255,255}
+   }{}
+   \ifthenelse{\equal{#1}{1}}{ % Inverted. White text on black background
+      \definecolor{foregc}{RGB}{255,255,255}
+      \definecolor{backgc}{RGB}{0,0,0}
+   }{}
+   \ifthenelse{\equal{#1}{2}}{ % Solarized light
+      \definecolor{foregc}{RGB}{101,123,131}
+      \definecolor{backgc}{RGB}{253,246,227}
+   }{}
+   \ifthenelse{\equal{#1}{3}}{ % Solarized dark
+      \definecolor{foregc}{RGB}{131,148,150}
+      \definecolor{backgc}{RGB}{0,43,54}
+   }{}
+   \ifthenelse{\equal{#1}{4}}{ % Monokai dark
+      \definecolor{foregc}{RGB}{248,248,242}
+      \definecolor{backgc}{RGB}{39,40,34}
+   }{}
+
+   \hypersetup{linkcolor=foregc,citecolor=foregc,urlcolor=foregc}
+   \pagecolor{backgc}
+   \color{foregc}
+}
+
+
+%% Alter some LaTeX defaults for better treatment of figures:
+%    % See p.105 of "TeX Unbound" for suggested values.
+%    % See pp. 199-200 of Lamport's "LaTeX" book for details.
+%    %   General parameters, for ALL pages:
+%    \renewcommand{\topfraction}{0.9}	% max fraction of floats at top
+%    \renewcommand{\bottomfraction}{0.8}	% max fraction of floats at bottom
+%    %   Parameters for TEXT pages (not float pages):
+%    \setcounter{topnumber}{2}
+%    \setcounter{bottomnumber}{2}
+%    \setcounter{totalnumber}{4}     % 2 may work better
+%    \setcounter{dbltopnumber}{2}    % for 2-column pages
+%    \renewcommand{\dbltopfraction}{0.9}	% fit big float above 2-col. text
+%    \renewcommand{\textfraction}{0.07}	% allow minimal text w. figs
+%    %   Parameters for FLOAT pages (not text pages):
+%    \renewcommand{\floatpagefraction}{0.7}	% require fuller float pages
+%	% N.B.: floatpagefraction MUST be less than topfraction !!
+%    \renewcommand{\dblfloatpagefraction}{0.7}	% require fuller float pages
+
+%%%%makes a page be able to be filled with more figures
+\renewcommand{\topfraction}{1.0}
+\renewcommand{\bottomfraction}{1.0}
+\renewcommand{\textfraction}{0}
+\addtolength{\itemsep}{0pt}

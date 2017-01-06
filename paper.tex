@@ -1,5 +1,11 @@
 \documentclass[conference]{IEEEtran}
 
+\input{macros}
+\input{config}
+
+\pdfColorScheme{\myPdfColorScheme} % "0" is standard and should be used for submission and printing
+\includeAuthorComments{\myIncludeAuthorComments} % "0" turns them off, otherwise they are on. Use \jim{} or \vijay{} or \jy{}
+
 \begin{document}
 
 % paper title
@@ -24,10 +30,33 @@ The abstract goes here.\\
 \end{abstract}
 
 
+
 \section{Introduction}
-This demo file is intended to serve as a ``starter file''
-for IEEE conference papers produced under \LaTeX\ using
-IEEEtran.cls version 1.8b and later.
+
+NOTE: this paper needs to be written while assuming a double-blind review. \emph{So we cannot refer to any of our prior work in the first-person -- it would have to be done in third person}. As such, the paper can only have sentences as follows. Jones and colleagues~\cite{palepu13sep,palepu2015revealing,deng11sep} in their work on visualizing runtime relationships between source code line \ldots
+
+Sentences like the following \emph{may} result in a rejection. In our prior work on visualizing runtime relationships between source code lines~\cite{palepu13sep,palepu2015revealing,deng11sep} \ldots
+
+Setting up comment colors:\\ 
+\jim{This is how Jim's comments look}\\
+\vijay{This is how Vijay's comments look}\\
+\jy{This is how JY's comments look}\\
+
+Golden formula for introductions (thanks to Jim Clause):
+\begin{enumerate}
+\item What's the problem?
+\item Why is it important?
+\item What is existing work
+\item Why is existing work insufficient?
+\item What are you doing?
+\item How does that address the insuffiencies of existing work?
+\item Contributions (ideally, should \textbf{start} on the second page --- no later)
+\end{enumerate}
+
+
+
+
+
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
 
@@ -53,15 +82,10 @@ The evaluation goes here.
 The conclusion goes here.
 
 \section*{Acknowledgment}
-The authors would like to thank...
+The authors would like to thank... NSF.
 \\
 
-\begin{thebibliography}{1}
-
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
-
-\end{thebibliography}
+\bibliographystyle{abbrv}
+\bibliography{paper}
 
 \end{document}
